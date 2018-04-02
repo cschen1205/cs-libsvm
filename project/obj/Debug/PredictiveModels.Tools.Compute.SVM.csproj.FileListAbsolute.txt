@@ -1,0 +1,12 @@
+C:\Users\chen0\git\clef-wazyn-analytics\PredictiveModels\PredictiveModels.Tools.Compute.SVM\bin\Debug\PredictiveModels.Tools.Compute.SVM.dll
+C:\Users\chen0\git\clef-wazyn-analytics\PredictiveModels\PredictiveModels.Tools.Compute.SVM\bin\Debug\PredictiveModels.Tools.Compute.SVM.pdb
+C:\Users\chen0\git\clef-wazyn-analytics\PredictiveModels\PredictiveModels.Tools.Compute.SVM\bin\Debug\NLog.dll
+C:\Users\chen0\git\clef-wazyn-analytics\PredictiveModels\PredictiveModels.Tools.Compute.SVM\bin\Debug\PredictiveModels.Tools.Commons.dll
+C:\Users\chen0\git\clef-wazyn-analytics\PredictiveModels\PredictiveModels.Tools.Compute.SVM\bin\Debug\MathNet.Numerics.dll
+C:\Users\chen0\git\clef-wazyn-analytics\PredictiveModels\PredictiveModels.Tools.Compute.SVM\bin\Debug\Newtonsoft.Json.dll
+C:\Users\chen0\git\clef-wazyn-analytics\PredictiveModels\PredictiveModels.Tools.Compute.SVM\bin\Debug\PredictiveModels.Tools.Commons.pdb
+C:\Users\chen0\git\clef-wazyn-analytics\PredictiveModels\PredictiveModels.Tools.Compute.SVM\bin\Debug\NLog.xml
+C:\Users\chen0\git\clef-wazyn-analytics\PredictiveModels\PredictiveModels.Tools.Compute.SVM\bin\Debug\MathNet.Numerics.xml
+C:\Users\chen0\git\clef-wazyn-analytics\PredictiveModels\PredictiveModels.Tools.Compute.SVM\bin\Debug\Newtonsoft.Json.xml
+C:\Users\chen0\git\clef-wazyn-analytics\PredictiveModels\PredictiveModels.Tools.Compute.SVM\obj\Debug\PredictiveModels.Tools.Compute.SVM.dll
+C:\Users\chen0\git\clef-wazyn-analytics\PredictiveModels\PredictiveModels.Tools.Compute.SVM\obj\Debug\PredictiveModels.Tools.Compute.SVM.pdb

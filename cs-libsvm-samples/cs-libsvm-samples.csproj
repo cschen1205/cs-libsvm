@@ -7,7 +7,7 @@
     <ProjectGuid>{5738EBCE-702D-49A8-9DC5-5B8B8FE904A1}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cs_libsvm_samples</RootNamespace>
+    <RootNamespace>LibSvmSharp</RootNamespace>
     <AssemblyName>cs-libsvm-samples</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\project\cs-libsvm.csproj">
+      <Project>{cf48527c-327e-483f-b324-90bf53627782}</Project>
+      <Name>cs-libsvm</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

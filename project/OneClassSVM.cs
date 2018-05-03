@@ -109,7 +109,7 @@ namespace LibSvmSharp
             return p < threshold();
         }
         
-        public void Learn(List<double[]> batch)
+        public void Fit(List<double[]> batch)
         {
             if (this.quiet)
             {

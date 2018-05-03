@@ -1,1 +1,8 @@
 *.user
+packages/
+*.suo
+*.exe
+*.obj
+.vs/
+bin/
+obj/

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PredictiveModels.Tools.Compute.SVM.libsvm;
+using LibSvmSharp.libsvm;
 
-namespace PredictiveModels.Tools.Compute.SVM
+namespace LibSvmSharp
 {
     public class OneClassSVM
     {
@@ -109,7 +109,7 @@ namespace PredictiveModels.Tools.Compute.SVM
             return p < threshold();
         }
         
-        public void Learn(List<double[]> batch, Func<int, bool> shouldTerminate)
+        public void Learn(List<double[]> batch)
         {
             if (this.quiet)
             {
@@ -155,7 +155,10 @@ namespace PredictiveModels.Tools.Compute.SVM
                 param.Gamma = 1.0 / max_index;
 
 
-            model = libsvm.SVM.svm_train(prob, param, shouldTerminate);
+            model = libsvm.SVM.svm_train(prob, param, (iteration) =>
+            {
+                return false;
+            });
         }
     }
 }

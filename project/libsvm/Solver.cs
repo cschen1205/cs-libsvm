@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PredictiveModels.Tools.Compute.SVM.libsvm
+namespace LibSvmSharp.libsvm
 {
     // An SMO algorithm in Fan et al., JMLR 6(2005), p. 1889--1918
     // Solves:

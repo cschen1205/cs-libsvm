@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PredictiveModels.Tools.Compute.SVM.libsvm;
+using LibSvmSharp.libsvm;
 
-namespace PredictiveModels.Tools.Compute.SVM
+namespace LibSvmSharp
 {
     public class SVC
     {

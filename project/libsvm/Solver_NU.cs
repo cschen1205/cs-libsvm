@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PredictiveModels.Tools.Compute.SVM.libsvm
+namespace LibSvmSharp.libsvm
 {
     //
     // Solver for nu-svm classification and regression

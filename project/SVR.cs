@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PredictiveModels.Tools.Compute.SVM.libsvm;
+using LibSvmSharp.libsvm;
 
-namespace PredictiveModels.Tools.Compute.SVM
+namespace LibSvmSharp
 {
     public class SVR
     {
@@ -140,7 +140,7 @@ namespace PredictiveModels.Tools.Compute.SVM
             return evaluate(tuple);
         }
         
-        public void Learn(List<KeyValuePair<double[], double>> batch, Func<int, bool> shouldTerminate)
+        public void Learn(List<KeyValuePair<double[], double>> batch)
         {
             if(this._isQuiet)
             {
@@ -186,7 +186,10 @@ namespace PredictiveModels.Tools.Compute.SVM
                 _param.Gamma = 1.0/max_index;
 
 
-            _model = libsvm.SVM.svm_train(prob, _param, shouldTerminate);
+            _model = libsvm.SVM.svm_train(prob, _param, (iteration) =>
+            {
+                return false;
+            });
         }
 
         public enum SVMType

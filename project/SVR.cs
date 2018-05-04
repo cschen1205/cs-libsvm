@@ -140,7 +140,7 @@ namespace LibSvmSharp
             return evaluate(tuple);
         }
         
-        public void Learn(List<KeyValuePair<double[], double>> batch)
+        public MSEMetric Fit(List<KeyValuePair<double[], double>> train_data, List<KeyValuePair<double[], double>> test_data)
         {
             if(this._isQuiet)
             {
@@ -153,13 +153,13 @@ namespace LibSvmSharp
             List<SVMNode[]> vx = new List<SVMNode[]>();
             int max_index = 0;
 
-            int m = batch.Count;
+            int m = train_data.Count;
             for(int i = 0; i<m; ++i)
             {
-                double[] x0 = batch[i].Key;
+                double[] x0 = train_data[i].Key;
                 int n = x0.Length;
 
-                vy.Add(batch[i].Value);
+                vy.Add(train_data[i].Value);
                 SVMNode[] x = new SVMNode[n];
                 for(int j = 0; j<n; j++)
                 {
@@ -184,12 +184,30 @@ namespace LibSvmSharp
 
             if(_param.Gamma == 0 && max_index > 0)
                 _param.Gamma = 1.0/max_index;
-
-
+            
             _model = libsvm.SVM.svm_train(prob, _param, (iteration) =>
             {
                 return false;
             });
+
+            MSEMetric metric = new MSEMetric();
+            metric.TrainMSE = GetMSE(train_data);
+            metric.TestMSE = GetMSE(test_data);
+
+            return metric;
+        }
+
+        private double GetMSE(List<KeyValuePair<double[], double>> data)
+        {
+            double result = 0;
+            foreach(KeyValuePair<double[], double> entry in data)
+            {
+                double[] x = entry.Key;
+                double y = entry.Value;
+                double predicted = predict(x);
+                result += (predicted - y) * (predicted - y);
+            }
+            return result;
         }
 
         public enum SVMType

@@ -135,7 +135,7 @@ namespace LibSvmSharp
             return v;
         }
         
-        public double predict(double[] tuple)
+        public double Predict(double[] tuple)
         {
             return evaluate(tuple);
         }
@@ -204,10 +204,10 @@ namespace LibSvmSharp
             {
                 double[] x = entry.Key;
                 double y = entry.Value;
-                double predicted = predict(x);
+                double predicted = Predict(x);
                 result += (predicted - y) * (predicted - y);
             }
-            return result;
+            return result / data.Count;
         }
 
         public enum SVMType

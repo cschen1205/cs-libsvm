@@ -33,7 +33,12 @@ namespace LibSvmSharp
 
             Console.WriteLine("Train MSE: {0}, Test MSE: {1}", metric.TrainMSE, metric.TestMSE);
             
-
+            foreach(KeyValuePair<double[], double> entry in test_data.GetRange(0, 10)) {
+                double[] x = entry.Key;
+                double y = entry.Value;
+                double output = svr.Predict(x);
+                Console.WriteLine("Predicted: {0} Actual: {1}", output, y);
+            }
         }
 
         private static Tuple<List<T>, List<T>> TrainTestSplit<T>(List<T> a, double test_size=0.2)
@@ -61,7 +66,7 @@ namespace LibSvmSharp
             while(i < a.Count)
             {
                 int j = random.Next(i + 1);
-                Swap(a, i, j);
+                Swap(a, i++, j);
             }
         }
 

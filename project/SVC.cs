@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LibSvmSharp.libsvm;
+using LibSvmSharp.metrics;
 
 namespace LibSvmSharp
 {
@@ -147,7 +148,7 @@ namespace LibSvmSharp
         }
 
 
-        public double evaluate(double[] x0)
+        public double Predict(double[] x0)
         {
             int n = x0.Length;
 
@@ -168,12 +169,12 @@ namespace LibSvmSharp
 
         public bool isInClass(double[] tuple)
         {
-            double p = evaluate(tuple);
+            double p = Predict(tuple);
             return p > 0;
         }
 
         // label: 1.0 : -1.0
-        public void Learn(List<KeyValuePair<double[], double>> batch, Func<int, bool> shouldTerminate)
+        public AccuracyMetric Fit(List<KeyValuePair<double[], bool>> train_data, List<KeyValuePair<double[], bool>> test_data)
         {
             if(this.quiet)
             {
@@ -186,14 +187,14 @@ namespace LibSvmSharp
             List<SVMNode[]> vx = new List<SVMNode[]>();
             int max_index = 0;
 
-            int m = batch.Count;
+            int m = train_data.Count;
 
             for(int i = 0; i<m; ++i)
             {
-                double[] x0 = batch[i].Key;
+                double[] x0 = train_data[i].Key;
                 int n = x0.Length;
 
-                vy.Add(batch[i].Value);
+                vy.Add(train_data[i].Value ? 1 : -1);
 
                 SVMNode[] x = new SVMNode[n];
                 for(int j = 0; j<n; j++)
@@ -221,7 +222,25 @@ namespace LibSvmSharp
                 _param.Gamma = 1.0/max_index;
 
 
-            model = libsvm.SVM.svm_train(prob, _param, shouldTerminate);
+            model = libsvm.SVM.svm_train(prob, _param, (state) => { return false; });
+
+            AccuracyMetric metric = new AccuracyMetric();
+            metric.TrainAccuracy = GetAccuracy(train_data);
+            metric.TestAccuracy = GetAccuracy(test_data);
+            return metric;
+        }
+
+        private double GetAccuracy(List<KeyValuePair<double[], bool>> data)
+        {
+            double result = 0;
+            foreach(KeyValuePair<double[], bool> entry in data)
+            {
+                double[] x = entry.Key;
+                bool y = entry.Value;
+                bool output = isInClass(x);
+                result += y == output ? 1 : 0;
+            }
+            return result / data.Count;
         }
 
         public enum SVMType

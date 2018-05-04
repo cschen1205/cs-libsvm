@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LibSvmSharp.libsvm;
+using LibSvmSharp.metrics;
 
 namespace LibSvmSharp
 {

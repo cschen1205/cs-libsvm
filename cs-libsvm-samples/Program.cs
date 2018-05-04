@@ -9,7 +9,8 @@ namespace LibSvmSharp
 
         static void Main(string[] args)
         {
-            SVRDemo.SolveRegressionProblem();
+            //SVRDemo.SolveRegressionProblem();
+            SVCDemo.SolveBinaryClassificationProblem();
         }
     }
 }
